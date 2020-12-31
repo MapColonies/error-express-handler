@@ -1,3 +1,3 @@
-# ts-npm-package-boilerplate
+# error-express-handler
 
-ts-npm-package-boilerplate
+error-express-handler
