@@ -5,8 +5,8 @@ export interface HttpError extends Error {
 };
 
 export interface ErrorResponse {
-  statusCode: StatusCodes;
   message: string;
+  stacktrace?: string;
 };
 
 export const getErrorHandlerMiddleware: (log: (message: string) => void) => ErrorRequestHandler = (log) => 
@@ -18,13 +18,17 @@ export const getErrorHandlerMiddleware: (log: (message: string) => void) => Erro
     next: NextFunction
     ): void => {
     log(`${req.method} request to ${req.originalUrl}  has failed with error: ${err.message}`);
-    if (err.statusCode) {
-      res.status(err.statusCode).json({ message: err.message });
-      return;
+    const errorResponse: ErrorResponse = {
+      message: err.message
+    };
+    const responseStatusCode = err.statusCode === undefined ? StatusCodes.INTERNAL_SERVER_ERROR : err.statusCode;
+
+    if(responseStatusCode >= StatusCodes.INTERNAL_SERVER_ERROR) {
+      if (process.env.NODE_ENV === 'production') {
+        errorResponse.message = getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR);
+      } else {
+        errorResponse.stacktrace = err.stack;
+      }
     }
-    if(process.env.NODE_ENV === 'production') {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR) });
-      return;
-    }
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: err.message });
+    res.status(responseStatusCode).json(errorResponse);
   };
