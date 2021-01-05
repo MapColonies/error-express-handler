@@ -1,6 +1,6 @@
 {
   "name": "@map-colonies/error-express-handler",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeScript and JavaScript classes for osm elements",
   "main": "./dist/index.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "prebuild": "npm run clean",
     "build": "tsc --project tsconfig.build.json",
     "start": "npm run build && cd dist && node ./index.js",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
