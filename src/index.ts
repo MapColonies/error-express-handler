@@ -9,7 +9,7 @@ export interface ErrorResponse {
   stacktrace?: string;
 };
 
-export const getErrorHandlerMiddleware: (log: (message: string) => void) => ErrorRequestHandler = (log) => 
+export const getErrorHandlerMiddleware: (log: (message: string) => void) => ErrorRequestHandler = (log) =>
    (
     err: HttpError,
     req,
