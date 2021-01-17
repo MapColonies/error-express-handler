@@ -2,6 +2,7 @@ import { NextFunction, ErrorRequestHandler } from 'express';
 import { StatusCodes, getReasonPhrase } from "http-status-codes";
 export interface HttpError extends Error {
   statusCode?: StatusCodes;
+  status?: StatusCodes;
 };
 
 export interface ErrorResponse {
@@ -21,7 +22,7 @@ export const getErrorHandlerMiddleware: (log: (message: string) => void) => Erro
     const errorResponse: ErrorResponse = {
       message: err.message
     };
-    const responseStatusCode = err.statusCode === undefined ? StatusCodes.INTERNAL_SERVER_ERROR : err.statusCode;
+    const responseStatusCode = err.statusCode ?? err.status ?? StatusCodes.INTERNAL_SERVER_ERROR;
 
     if(responseStatusCode >= StatusCodes.INTERNAL_SERVER_ERROR) {
       if (process.env.NODE_ENV === 'production') {

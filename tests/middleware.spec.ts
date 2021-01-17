@@ -3,7 +3,7 @@ import { Application, NextFunction } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import * as supertest from 'supertest';
 
-import { getErrorHandlerMiddleware, HttpError } from '../../src/index';
+import { getErrorHandlerMiddleware, HttpError } from '../src/index';
 describe('#getErrorHandlerMiddleware', function () {
   let expressApp: Application;
   let logFn: jest.Mock;
@@ -24,7 +24,7 @@ describe('#getErrorHandlerMiddleware', function () {
       process.env.NODE_ENV = 'test';
     });
     describe('Errors with statusCode', function() {
-      it('for non 500 requests return the info and status code', async function () {
+      it('for non 500 requests return the info and status', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
           error.statusCode = StatusCodes.UNPROCESSABLE_ENTITY;
@@ -34,7 +34,7 @@ describe('#getErrorHandlerMiddleware', function () {
         expect(response).toHaveProperty('body.message', 'meow');
         expect(response.status).toEqual(StatusCodes.UNPROCESSABLE_ENTITY);
       });
-      it('for 500 requests return the info and status code', async function () {
+      it('for 500 requests return the info and status', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
           error.statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
@@ -62,6 +62,28 @@ describe('#getErrorHandlerMiddleware', function () {
         });
         const response = await supertest.agent(expressApp).get('/avi');
         expect(response).toHaveProperty('body.message', getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR));
+      });
+    });
+    describe('Errors with status', function() {
+      it('for non 500 requests return the info and status', async function () {
+        errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
+          const error: HttpError = new Error('meow');
+          error.status = StatusCodes.UNPROCESSABLE_ENTITY;
+          return next(error);
+        });
+        const response = await supertest.agent(expressApp).get('/avi');
+        expect(response).toHaveProperty('body.message', 'meow');
+        expect(response.status).toEqual(StatusCodes.UNPROCESSABLE_ENTITY);
+      });
+      it('for 500 requests return the info and status', async function () {
+        errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
+          const error: HttpError = new Error('meow');
+          error.status = StatusCodes.INTERNAL_SERVER_ERROR;
+          return next(error);
+        });
+        const response = await supertest.agent(expressApp).get('/avi');
+        expect(response).toHaveProperty('body.message', getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR));
+        expect(response.status).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
       });
     });
   });
@@ -104,6 +126,28 @@ describe('#getErrorHandlerMiddleware', function () {
         expect(response).toHaveProperty('body.stacktrace');
       });
     });
+    describe('Errors with status', function() {
+      it('for non 500 requests return the info and status', async function () {
+        errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
+          const error: HttpError = new Error('meow');
+          error.status = StatusCodes.UNPROCESSABLE_ENTITY;
+          return next(error);
+        });
+        const response = await supertest.agent(expressApp).get('/avi');
+        expect(response).toHaveProperty('body.message', 'meow');
+        expect(response.status).toEqual(StatusCodes.UNPROCESSABLE_ENTITY);
+      });
+      it('for 500 requests return the info and status', async function () {
+        errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
+          const error: HttpError = new Error('meow');
+          error.status = StatusCodes.INTERNAL_SERVER_ERROR;
+          return next(error);
+        });
+        const response = await supertest.agent(expressApp).get('/avi');
+        expect(response).toHaveProperty('body.message', 'meow');
+        expect(response.status).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
+      });
+    });
   });
   describe('no env variable', function() {
     beforeAll(function() {
@@ -142,6 +186,28 @@ describe('#getErrorHandlerMiddleware', function () {
         expect(response).toHaveProperty('body.message', 'meow');
         expect(response).toHaveProperty('status', StatusCodes.INTERNAL_SERVER_ERROR);
         expect(response).toHaveProperty('body.stacktrace');
+      });
+    });
+    describe('Errors with status', function() {
+      it('for non 500 requests return the info and status', async function () {
+        errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
+          const error: HttpError = new Error('meow');
+          error.status = StatusCodes.UNPROCESSABLE_ENTITY;
+          return next(error);
+        });
+        const response = await supertest.agent(expressApp).get('/avi');
+        expect(response).toHaveProperty('body.message', 'meow');
+        expect(response.status).toEqual(StatusCodes.UNPROCESSABLE_ENTITY);
+      });
+      it('for 500 requests return the info and status', async function () {
+        errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
+          const error: HttpError = new Error('meow');
+          error.status = StatusCodes.INTERNAL_SERVER_ERROR;
+          return next(error);
+        });
+        const response = await supertest.agent(expressApp).get('/avi');
+        expect(response).toHaveProperty('body.message', 'meow');
+        expect(response.status).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
       });
     });
   });
