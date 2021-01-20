@@ -10,8 +10,8 @@ export interface ErrorResponse {
   stacktrace?: string;
 };
 
-export const getErrorHandlerMiddleware: (log: (message: string) => void) => ErrorRequestHandler = (log) =>
-   (
+export const getErrorHandlerMiddleware: (log: (message: string) => void) => ErrorRequestHandler = (log) => {
+  const mapColoniesErrorExpressHandler: ErrorRequestHandler = (
     err: HttpError,
     req,
     res,
@@ -33,3 +33,7 @@ export const getErrorHandlerMiddleware: (log: (message: string) => void) => Erro
     }
     res.status(responseStatusCode).json(errorResponse);
   };
+
+  return mapColoniesErrorExpressHandler;
+
+}
