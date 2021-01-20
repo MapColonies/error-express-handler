@@ -1,5 +1,7 @@
 import { NextFunction, ErrorRequestHandler } from 'express';
 import { StatusCodes, getReasonPhrase } from 'http-status-codes';
+
+type LogFunction  = (message: string) => void;
 export interface HttpError extends Error {
   statusCode?: StatusCodes;
   status?: StatusCodes;
@@ -10,7 +12,7 @@ export interface ErrorResponse {
   stacktrace?: string;
 }
 
-export const getErrorHandlerMiddleware: (log: (message: string) => void) => ErrorRequestHandler = (log) => {
+export const getErrorHandlerMiddleware: (log: LogFunction) => ErrorRequestHandler = (log) => {
   const mapColoniesErrorExpressHandler: ErrorRequestHandler = (
     err: HttpError,
     req,
