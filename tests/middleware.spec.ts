@@ -1,4 +1,4 @@
-import * as express from "express";
+import * as express from 'express';
 import { Application, NextFunction } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import * as supertest from 'supertest';
@@ -9,21 +9,21 @@ describe('#getErrorHandlerMiddleware', function () {
   let logFn: jest.Mock;
   let errorFn: jest.Mock;
 
-  beforeAll(function() {
+  beforeAll(function () {
     logFn = jest.fn();
     errorFn = jest.fn();
     expressApp = express();
     expressApp.use('/avi', errorFn);
     expressApp.use(getErrorHandlerMiddleware(logFn));
   });
-  describe('production', function() {
-    beforeAll(function() {
+  describe('production', function () {
+    beforeAll(function () {
       process.env.NODE_ENV = 'production';
     });
-    afterAll(function() {
+    afterAll(function () {
       process.env.NODE_ENV = 'test';
     });
-    describe('Errors with statusCode', function() {
+    describe('Errors with statusCode', function () {
       it('for non 500 requests return the info and status', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
@@ -46,7 +46,7 @@ describe('#getErrorHandlerMiddleware', function () {
       });
     });
     describe('Errors without status code', function () {
-      it('for non 500 requests return 500 and Internal Server Error', async function() {
+      it('for non 500 requests return 500 and Internal Server Error', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('Meow');
           return next(error);
@@ -54,7 +54,7 @@ describe('#getErrorHandlerMiddleware', function () {
         const response = await supertest.agent(expressApp).get('/avi');
         expect(response).toHaveProperty('body.message', getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR));
       });
-      it('for 500 requests return 500 and Internal Server Error', async function() {
+      it('for 500 requests return 500 and Internal Server Error', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('Meow');
           error.statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
@@ -64,7 +64,7 @@ describe('#getErrorHandlerMiddleware', function () {
         expect(response).toHaveProperty('body.message', getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR));
       });
     });
-    describe('Errors with status', function() {
+    describe('Errors with status', function () {
       it('for non 500 requests return the info and status', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
@@ -87,11 +87,11 @@ describe('#getErrorHandlerMiddleware', function () {
       });
     });
   });
-  describe('non_production', function() {
-    beforeAll(function() {
+  describe('non_production', function () {
+    beforeAll(function () {
       process.env.NODE_ENV = 'non_production';
     });
-    describe('Errors with statusCode', function() {
+    describe('Errors with statusCode', function () {
       it('for non 500 requests return the info and status code', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
@@ -114,7 +114,7 @@ describe('#getErrorHandlerMiddleware', function () {
         expect(response).toHaveProperty('body.stacktrace');
       });
     });
-    describe('Errors without statusCode', function() {
+    describe('Errors without statusCode', function () {
       it('should return Internal Server Error and stacktrace', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
@@ -126,7 +126,7 @@ describe('#getErrorHandlerMiddleware', function () {
         expect(response).toHaveProperty('body.stacktrace');
       });
     });
-    describe('Errors with status', function() {
+    describe('Errors with status', function () {
       it('for non 500 requests return the info and status', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
@@ -149,11 +149,11 @@ describe('#getErrorHandlerMiddleware', function () {
       });
     });
   });
-  describe('no env variable', function() {
-    beforeAll(function() {
+  describe('no env variable', function () {
+    beforeAll(function () {
       process.env.NODE_ENV = undefined;
     });
-    describe('Errors with statusCode', function() {
+    describe('Errors with statusCode', function () {
       it('for non 500 requests return the info and status code', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
@@ -176,7 +176,7 @@ describe('#getErrorHandlerMiddleware', function () {
         expect(response).toHaveProperty('body.stacktrace');
       });
     });
-    describe('Errors without statusCode', function() {
+    describe('Errors without statusCode', function () {
       it('should return Internal Server Error and stacktrace', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');
@@ -188,7 +188,7 @@ describe('#getErrorHandlerMiddleware', function () {
         expect(response).toHaveProperty('body.stacktrace');
       });
     });
-    describe('Errors with status', function() {
+    describe('Errors with status', function () {
       it('for non 500 requests return the info and status', async function () {
         errorFn.mockImplementationOnce((req: Request, res: Response, next: NextFunction) => {
           const error: HttpError = new Error('meow');

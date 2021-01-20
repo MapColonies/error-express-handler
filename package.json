@@ -4,9 +4,10 @@
   "description": "TypeScript and JavaScript classes for osm elements",
   "main": "./dist/index.js",
   "scripts": {
-    "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write .",
-    "prelint:fix": "npm run prettier:fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "prelint:fix": "npm run format:fix",
+    "prelint": "npm run format",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "release": "standard-version",
