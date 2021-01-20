@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/MapColonies/error-express-handler/compare/v1.1.0...v1.2.0) (2021-01-20)
+
+
+### Features
+
+* **error-handler:** used named variable for function infavor of opentelemetry tracing ([#2](https://github.com/MapColonies/error-express-handler/issues/2)) ([5129b82](https://github.com/MapColonies/error-express-handler/commit/5129b82ba40192ec9615a8588f867d1737b8d0f4))
+
 ## [1.1.0](https://github.com/MapColonies/error-express-handler/compare/v1.0.2...v1.1.0) (2021-01-17)
 
 
