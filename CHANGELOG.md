@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/MapColonies/error-express-handler/compare/v1.2.0...v2.0.0) (2021-04-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **error-handler:** removed logging from the middleware (#3)
+
+* **error-handler:** removed logging from the middleware ([#3](https://github.com/MapColonies/error-express-handler/issues/3)) ([592bbe6](https://github.com/MapColonies/error-express-handler/commit/592bbe6fe70af9c3d3e7c2359b5862291a9dc375))
+
 ## [1.2.0](https://github.com/MapColonies/error-express-handler/compare/v1.1.0...v1.2.0) (2021-01-20)
 
 
