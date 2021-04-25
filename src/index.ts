@@ -1,7 +1,6 @@
 import { NextFunction, ErrorRequestHandler } from 'express';
 import { StatusCodes, getReasonPhrase } from 'http-status-codes';
 
-type LogFunction = (message: string) => void;
 export interface HttpError extends Error {
   statusCode?: StatusCodes;
   status?: StatusCodes;
@@ -12,7 +11,7 @@ export interface ErrorResponse {
   stacktrace?: string;
 }
 
-export const getErrorHandlerMiddleware: (log: LogFunction) => ErrorRequestHandler = (log) => {
+export const getErrorHandlerMiddleware: () => ErrorRequestHandler = () => {
   const mapColoniesErrorExpressHandler: ErrorRequestHandler = (
     err: HttpError,
     req,
@@ -20,7 +19,6 @@ export const getErrorHandlerMiddleware: (log: LogFunction) => ErrorRequestHandle
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     next: NextFunction
   ): void => {
-    log(`${req.method} request to ${req.originalUrl}  has failed with error: ${err.message}`);
     const errorResponse: ErrorResponse = {
       message: err.message,
     };

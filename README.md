@@ -19,7 +19,7 @@ const app = express();
 
 app.use('/meow', fn);
 
-app.use(getErrorHandlerMiddleware((message) => console.error(message)));
+app.use(getErrorHandlerMiddleware());
 
 app.listen(8080, function() {
     console.log('server is up');
