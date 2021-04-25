@@ -1,7 +1,6 @@
 import { NextFunction, ErrorRequestHandler } from 'express';
 import { StatusCodes, getReasonPhrase } from 'http-status-codes';
 
-type LogFunction = (message: string) => void;
 export interface HttpError extends Error {
   statusCode?: StatusCodes;
   status?: StatusCodes;
