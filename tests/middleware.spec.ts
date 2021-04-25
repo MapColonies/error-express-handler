@@ -6,15 +6,13 @@ import * as supertest from 'supertest';
 import { getErrorHandlerMiddleware, HttpError } from '../src/index';
 describe('#getErrorHandlerMiddleware', function () {
   let expressApp: Application;
-  let logFn: jest.Mock;
   let errorFn: jest.Mock;
 
   beforeAll(function () {
-    logFn = jest.fn();
     errorFn = jest.fn();
     expressApp = express();
     expressApp.use('/avi', errorFn);
-    expressApp.use(getErrorHandlerMiddleware(logFn));
+    expressApp.use(getErrorHandlerMiddleware());
   });
   describe('production', function () {
     beforeAll(function () {
