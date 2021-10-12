@@ -25,14 +25,14 @@ export const getErrorHandlerMiddleware: () => ErrorRequestHandler = () => {
     const responseStatusCode = err.statusCode ?? err.status ?? StatusCodes.INTERNAL_SERVER_ERROR;
 
     if (responseStatusCode >= StatusCodes.INTERNAL_SERVER_ERROR) {
+      //@ts-ignore pino-http looks for this property for error info
+      res.err = err;
       if (process.env.NODE_ENV === 'production') {
         errorResponse.message = getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR);
       } else {
         errorResponse.stacktrace = err.stack;
       }
     }
-    //@ts-ignore pino-http looks for this property for error info
-    res.err = err;
     res.status(responseStatusCode).json(errorResponse);
   };
 
