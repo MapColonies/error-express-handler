@@ -31,6 +31,8 @@ export const getErrorHandlerMiddleware: () => ErrorRequestHandler = () => {
         errorResponse.stacktrace = err.stack;
       }
     }
+    //@ts-ignore pino-http looks for this property for error info
+    res.err = err;
     res.status(responseStatusCode).json(errorResponse);
   };
 
