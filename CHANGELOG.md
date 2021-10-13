@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/MapColonies/error-express-handler/compare/v2.0.0...v2.1.0) (2021-10-13)
+
+
+### Features
+
+* **error-handler:** pass error on the response for pino to handle ([#5](https://github.com/MapColonies/error-express-handler/issues/5)) ([fe666b9](https://github.com/MapColonies/error-express-handler/commit/fe666b913ad3fe4be56d3631ec07e5b342e71d87))
+
 ## [2.0.0](https://github.com/MapColonies/error-express-handler/compare/v1.2.0...v2.0.0) (2021-04-25)
 
 
