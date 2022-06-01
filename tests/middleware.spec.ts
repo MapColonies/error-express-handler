@@ -4,6 +4,7 @@ import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import * as supertest from 'supertest';
 
 import { getErrorHandlerMiddleware, HttpError } from '../src/index';
+
 describe('#getErrorHandlerMiddleware', function () {
   let expressApp: Application;
   let errorFn: jest.Mock;
