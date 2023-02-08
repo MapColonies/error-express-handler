@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: error-express-handler
+  description: error middleware for express with custom logic based on status code
+  annotations:
+    github.com/project-slug: MapColonies/error-express-handler
+  tags: 
+    - nodejs
+    - typescript
+    - expressjs
+spec:
+  type: library
+  lifecycle: production
+  owner: DevInfra
+  system: npm-packages
