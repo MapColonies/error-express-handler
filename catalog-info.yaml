@@ -5,7 +5,7 @@ metadata:
   description: error middleware for express with custom logic based on status code
   annotations:
     github.com/project-slug: MapColonies/error-express-handler
-  tags: 
+  tags:
     - nodejs
     - typescript
     - expressjs
