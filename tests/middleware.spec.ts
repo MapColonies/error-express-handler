@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express, { type Request, type Response } from 'express';
 import { Application, NextFunction } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import * as supertest from 'supertest';
