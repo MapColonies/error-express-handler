@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: weekly
     allow:
-  - dependency-type: production
+    - dependency-type: production
     directory: /
     commit-message:
       prefix: 'build(deps)'
