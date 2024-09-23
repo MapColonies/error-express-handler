@@ -6,17 +6,17 @@ updates:
     schedule:
       interval: weekly
     allow:
-    - dependency-type: production
+      - dependency-type: production
     directory: /
     commit-message:
-      prefix: 'build(deps)'
+      prefix: "build(deps)"
     groups:
       map-colonies:
         patterns:
-          - '@map-colonies/*'
+          - "@map-colonies/*"
       opentelemetry:
         patterns:
-          - '@opentelemetry/*'
+          - "@opentelemetry/*"
       patch:
         update-types:
           - patch
@@ -28,25 +28,25 @@ updates:
       - dependency-type: development
     directory: /
     commit-message:
-      prefix: 'build(dev-deps)'
+      prefix: "build(dev-deps)"
     groups:
       map-colonies:
         patterns:
-          - '@map-colonies/*'
+          - "@map-colonies/*"
       opentelemetry:
         patterns:
-          - '@opentelemetry/*'
+          - "@opentelemetry/*"
       types:
         patterns:
-          - '@types/*'
+          - "@types/*"
       dev-patch:
         update-types:
           - patch
-
+    
   # github deps
   - package-ecosystem: github-actions
-    schedule:
+    schedule: 
       interval: weekly
     commit-message:
-      prefix: 'ci(deps)'
-    directory: '/'
+      prefix: "ci(deps)"
+    directory: "/"
