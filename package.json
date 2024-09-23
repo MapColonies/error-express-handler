@@ -21,8 +21,8 @@
     "build": "tsc --project tsconfig.build.json",
     "start": "npm run build && cd dist && node ./index.js",
     "clean": "rimraf dist",
-    "install": "npx husky install",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
