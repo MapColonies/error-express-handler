@@ -5,7 +5,6 @@ module.exports = {
   coverageReporters: ['text', 'html'],
   rootDir: '../../.',
   testMatch: ['<rootDir>/tests/**/*.spec.ts'],
-  setupFiles: ['<rootDir>/tests/configurations/jest.setup.js'],
   collectCoverage: true,
   moduleDirectories: ['node_modules', 'src'],
   collectCoverageFrom: ['<rootDir>/src/**/*.{ts}', '!**/node_modules/**', '!**/vendor/**'],
