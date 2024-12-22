@@ -45,6 +45,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "homepage": "https://github.com/MapColonies/error-express-handler#readme",
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
