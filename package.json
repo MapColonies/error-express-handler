@@ -1,7 +1,7 @@
 {
   "name": "@map-colonies/error-express-handler",
   "version": "2.1.0",
-  "description": "TypeScript and JavaScript classes for osm elements",
+  "description": "Express error handler for the MapColonies project",
   "main": "./dist/index.js",
   "exports": {
     ".": {
