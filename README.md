@@ -27,4 +27,4 @@ app.listen(8080, function() {
 ```
 
 ## Flow
-![Flow of package](docs/flow.png)
+![Flow of package](./assets/flow.png)
