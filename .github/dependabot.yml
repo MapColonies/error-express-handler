@@ -12,7 +12,7 @@ updates:
       - dependency-type: production
     directory: /
     commit-message:
-      prefix: 'deps(prod)'
+      prefix: 'deps'
     groups:
       map-colonies:
         patterns:
