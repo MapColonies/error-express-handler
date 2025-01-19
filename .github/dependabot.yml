@@ -8,6 +8,8 @@ updates:
       - '@MapColonies/infra'
     schedule:
       interval: weekly
+    labels:
+      - 'infra'
     allow:
       - dependency-type: production
     directory: /
@@ -33,6 +35,8 @@ updates:
     directory: /
     commit-message:
       prefix: 'deps'
+    labels:
+      - 'infra'
     reviewers:
       - '@MapColonies/infra'
     groups:
@@ -54,6 +58,8 @@ updates:
   - package-ecosystem: github-actions
     schedule:
       interval: weekly
+    labels:
+      - 'infra'
     commit-message:
       prefix: 'ci'
     directory: '/'
