@@ -1,6 +1,6 @@
 {
   "name": "@map-colonies/error-express-handler",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Express error handler for the MapColonies project",
   "main": "./dist/index.js",
   "exports": {
