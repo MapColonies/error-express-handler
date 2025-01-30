@@ -67,7 +67,7 @@
     "@swc/core": "^1.7.26",
     "@swc/jest": "^0.2.36",
     "@map-colonies/infra-copilot-instructions": "^1.0.0",
-    "@map-colonies/commitlint-config": "^1.0.0"
+    "@map-colonies/commitlint-config": "^1.1.0"
   },
   "dependencies": {
     "http-status-codes": "^2.3.0"
