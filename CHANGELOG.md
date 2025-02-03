@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/MapColonies/error-express-handler/compare/error-express-handler-v3.0.0...error-express-handler-v4.0.0) (2025-02-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* added engine setting to package.json ([#22](https://github.com/MapColonies/error-express-handler/issues/22))
+* **error-handler:** removed logging from the middleware ([#3](https://github.com/MapColonies/error-express-handler/issues/3))
+
+### Features
+
+* add backstage docs ([b2109e5](https://github.com/MapColonies/error-express-handler/commit/b2109e5c598fb176d3555771466cd335717d991d))
+* **error-handler:** added error handler ([d6e8174](https://github.com/MapColonies/error-express-handler/commit/d6e817425d70989c3787e249c877ade08555949a))
+* **error-handler:** added support for HttpErrors with status field ([92df211](https://github.com/MapColonies/error-express-handler/commit/92df211d7bff64b10b75e7afea0b54564afd8488))
+* **error-handler:** pass error on the response for pino to handle ([#5](https://github.com/MapColonies/error-express-handler/issues/5)) ([fe666b9](https://github.com/MapColonies/error-express-handler/commit/fe666b913ad3fe4be56d3631ec07e5b342e71d87))
+* **error-handler:** used named variable for function infavor of opentelemetry tracing ([#2](https://github.com/MapColonies/error-express-handler/issues/2)) ([5129b82](https://github.com/MapColonies/error-express-handler/commit/5129b82ba40192ec9615a8588f867d1737b8d0f4))
+
+
+### Bug Fixes
+
+* **error-handler:** fixed behavior and added tests ([a644316](https://github.com/MapColonies/error-express-handler/commit/a644316d4460e24205da9cd4a657cd0161612841))
+
+
+### Code Refactoring
+
+* **error-handler:** removed logging from the middleware ([#3](https://github.com/MapColonies/error-express-handler/issues/3)) ([592bbe6](https://github.com/MapColonies/error-express-handler/commit/592bbe6fe70af9c3d3e7c2359b5862291a9dc375))
+* modernize package ([#12](https://github.com/MapColonies/error-express-handler/issues/12)) ([e3003dd](https://github.com/MapColonies/error-express-handler/commit/e3003dda8e1084a2035b5630fa91d18e140940ee))
+
+
+### Build System
+
+* added engine setting to package.json ([#22](https://github.com/MapColonies/error-express-handler/issues/22)) ([0f6066c](https://github.com/MapColonies/error-express-handler/commit/0f6066cfbcb51d7f64aaae269af42ccfbc4a3f4b))
+* **deps:** npm-check-updates ([#8](https://github.com/MapColonies/error-express-handler/issues/8)) ([10a12fb](https://github.com/MapColonies/error-express-handler/commit/10a12fb6f5a87fb8e910b064eec6fc88098a86d3))
+* **deps:** upgrade http-status-codes from 2.1.4 to 2.2.0 ([#6](https://github.com/MapColonies/error-express-handler/issues/6)) ([dbf1a8e](https://github.com/MapColonies/error-express-handler/commit/dbf1a8e137a35fdbce6a054b0c220256eafecf72))
+
 ## [3.0.0](https://github.com/MapColonies/error-express-handler/compare/v2.1.0...v3.0.0) (2025-01-19)
 
 
